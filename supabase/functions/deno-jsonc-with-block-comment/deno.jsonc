@@ -1,6 +1,7 @@
 {
   "imports": {
-    /* I am a block comment */
+    /* I am a
+      block comment */
     "@std/assert": "jsr:@std/assert"
   }
 }
