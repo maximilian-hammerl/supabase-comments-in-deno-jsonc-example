@@ -1,7 +1,18 @@
 #  Supabase Edge Functions Bug: `deno.jsonc` Compatibility Issue
 
 This repository demonstrates a bug in Supabase's Edge Functions where the `deno.jsonc` file is not fully supported, despite being explicitly recommended for use (see [Using deno.jsonc (recommended)](https://supabase.com/docs/guides/functions/import-maps#using-denojsonc-recommended)).
-The issue arises when the `deno.jsonc` file includes JSONC-specific features like comments (line or block) or trailing commas, which cause the edge functions to fail with the following error message:
+The issue arises when the `deno.jsonc` file includes JSONC-specific features like comments (line or block) or trailing commas, which cause the edge functions to fail.
+
+Bug report: https://github.com/supabase/cli/issues/3050
+
+## Issue Summary
+
+**Expected behavior:**
+Supabase should support the `deno.jsonc` file format as advertised, including all JSONC features (comments and trailing commas).
+
+**Actual behavior:**
+Edge functions only support `deno.jsonc` files that are valid JSON (without comments or trailing commas).
+Edge functions using JSONC-specific features fail with the following error message:
 
 ```
 InvalidWorkerCreation: worker boot error: Unable to parse import map JSON: key must be a string at line 3 column 5
@@ -17,14 +28,6 @@ And edge function response:
 ```json
 {"code":"BOOT_ERROR","message":"Worker failed to boot (please check logs)"}
 ```
-
-## Issue Summary
-
-**Expected behavior:**
-Supabase should support the `deno.jsonc` file format as advertised, including all JSONC features (comments and trailing commas).
-
-**Actual behavior:**
-Edge functions only support `deno.jsonc` files that are valid JSON (without comments or trailing commas).
 
 ## Demonstration
 
