@@ -1,0 +1,6 @@
+{
+  "imports": {
+    // I am a line comment
+    "@std/assert": "jsr:@std/assert"
+  }
+}
