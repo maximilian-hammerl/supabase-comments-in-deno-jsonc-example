@@ -1,7 +1,22 @@
 #  Supabase Edge Functions Bug: `deno.jsonc` Compatibility Issue
 
 This repository demonstrates a bug in Supabase's Edge Functions where the `deno.jsonc` file is not fully supported, despite being explicitly recommended for use (see [Using deno.jsonc (recommended)](https://supabase.com/docs/guides/functions/import-maps#using-denojsonc-recommended)).
-The issue arises when the `deno.jsonc` file includes JSONC-specific features like comments (line or block) or trailing commas, which cause the edge functions to fail.
+The issue arises when the `deno.jsonc` file includes JSONC-specific features like comments (line or block) or trailing commas, which cause the edge functions to fail with the following error message:
+
+```
+InvalidWorkerCreation: worker boot error: Unable to parse import map JSON: key must be a string at line 3 column 5
+    at async UserWorker.create (ext:sb_user_workers/user_workers.js:139:15)
+    at async Object.handler (file:///root/index.ts:156:22)
+    at async respond (ext:sb_core_main_js/js/http.js:197:14) {
+  name: "InvalidWorkerCreation"
+}
+```
+
+And edge function response:
+
+```json
+{"code":"BOOT_ERROR","message":"Worker failed to boot (please check logs)"}
+```
 
 ## Issue Summary
 
