@@ -1,4 +1,4 @@
-#  Supabase Edge Functions Bug: `deno.jsonc` Compatibility Issue
+# Supabase Edge Functions Bug: `deno.jsonc` Compatibility Issue
 
 This repository demonstrates a bug in Supabase's Edge Functions where the `deno.jsonc` file is not fully supported, despite being explicitly recommended for use (see [Using deno.jsonc (recommended)](https://supabase.com/docs/guides/functions/import-maps#using-denojsonc-recommended)).
 The issue arises when the `deno.jsonc` file includes JSONC-specific features like comments (line or block) or trailing commas, which cause the edge functions to fail.
